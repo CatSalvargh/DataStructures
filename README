@@ -1,0 +1,12 @@
+Data Structures repository - part of The Odin Project Full Stack program - JS Path
+
+DS 1 - Linked List
+    learning goal: implement a Linked list and its basic operations in JS from scratch
+    
+    Learned concepts:
+    1. Linked list can be build out of factory functions, Classes or Constructors and they are composed of two of these objects: a Node and the Linked List and an iteration logic
+
+    2. I selected factory functions to build mine. Then, based on my online research, I built my iteration logic as follows: 
+    The first element ever appended becomes the head
+    Then each subsequent element is assigned as its predecesor's pointer
+    Upon appending, searching or removing, I assign the head to a temporary pointer (current = head) to start the iteration and use a while/for loop to iterate through each node's next (pointer) until the desired index is reached to perform the relevant action.
