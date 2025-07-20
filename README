@@ -6,7 +6,8 @@ DS 1 - Linked List
     Learned concepts:
     1. Linked list can be build out of factory functions, Classes or Constructors and they are composed of two of these objects: a Node and the Linked List and an iteration logic
 
-    2. I selected factory functions to build mine. Then, based on my online research, I built my iteration logic as follows: 
-    The first element ever appended becomes the head
-    Then each subsequent element is assigned as its predecesor's pointer
-    Upon appending, searching or removing, I assign the head to a temporary pointer (current = head) to start the iteration and use a while/for loop to iterate through each node's next (pointer) until the desired index is reached to perform the relevant action.
+    2. I selected factory functions to build mine and did not based it oupon JS Arrays and array built-in methods, but rather an implementation that mimics the unordered nature of a linked list. 
+    Based on my online research, I built my iteration logic as follows: 
+     - The first node ever appended becomes the head
+     - Each subsequent node is assigned as its predecesor's pointer
+     - Upon any appending, searching or removing operations, I assign the head to a temporary pointer (current = head) to start the iteration and use a while/for loop to iterate through each node's next (pointer) until the desired index is reached to perform the relevant action.
