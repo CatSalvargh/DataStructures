@@ -1,3 +1,5 @@
+import { LinkedList } from './linkedList.js'
+
 export function stringToNumber(string) {
     let hashCode = 0;
     const primeNumber = 31;
@@ -12,56 +14,60 @@ export function stringToNumber(string) {
 export function HashMap(initialCapacity = 4) {
     let capacity = initialCapacity
     let count = 0;
-    let buckets = new Array(capacity).fill(null).map(() => []);
-    const loadFactor = 0.8;
+    let buckets = new Array(capacity).fill(null).map(() => LinkedList());
+    const loadFactor = 0.75;
 
     const hash = (key) => (stringToNumber(key)) % capacity
+
+    const printHMap = () => console.log(buckets.toString())
 
     function set(key, value) {
       const index = hash(key);
       const bucket = buckets[index]
+      
+      if (!key || !value) return null
 
-      for (let i = 0; i < buckets.length; i++) {
-        if (key === bucket[0]) {
-            bucket[1] = value
-            return
-        } else {
-            bucket.push([key, value])
-            break
-        }
+      if (bucket.contains(key)) {
+        bucket.edit(key, value)
+      } else {
+        bucket.append(key, value)
+        count++
       }
-      count++
-
       if (count / capacity > loadFactor) {
         growth()
       }
+      
     }
 
     function get(key) {
       const index = hash(key)
       const bucket = buckets[index]
 
-      for (const [k, v] of bucket) {
-        if (k === key) {
-          return v
-        }
+      let current = bucket.head;
+
+      while (current) {
+        if (current.entry[0] === key) return current.entry[1];
+        current = current.next;
       }
-      return null
+      return null;
     }
 
     function has(key) {
-      const entry = get(key)
+      const index = hash(key)
+      const bucket = buckets[index]
       
-      return entry? true : false
+      return bucket.contains(key)
     }
 
     function remove(key) {
       const index = hash(key)
       let bucket = buckets[index]
 
-      for (let i = 0; i < bucket.length; i++) {
-        if (bucket[i][0] === key) {
-          bucket.splice(i, 1);
+      for (let i = 0; i <= bucket.length; i++) {
+        const keyValue = bucket.keyValues()
+
+        if (keyValue[i][0] === key) {
+          bucket.removeAt(i)
           count--;
           return true;
         }
@@ -72,57 +78,72 @@ export function HashMap(initialCapacity = 4) {
     const length = () => count
 
     function clear() {
-      for (const bucket of buckets) {
-        bucket.splice(0)
-      }
+      buckets = new Array(capacity).fill(null).map(() => LinkedList());
       count = 0
     }
 
     function keys() {
       const result = []
-        for (const bucket of buckets) {
-          for (const [k, v] of bucket) {
-            result.push(k)
-          }
+
+      for (const bucket of buckets) {
+
+        if (!bucket.head) continue;
+
+        for (let i = 0; i <= bucket.length; i++) {
+          const pairs = bucket.keyValues()
+          result.push(pairs[i][0])
         }
-        return result
+      }
+      return result
     }
 
     function values() {
       const result = []
-        for (const bucket of buckets) {
-          for (const [k, v] of bucket) {
-            result.push(v)
-          }
+
+      for (const bucket of buckets) {
+
+        if (!bucket.head) continue;
+
+        for (let i = 0; i <= bucket.length; i++) {
+          const pairs = bucket.keyValues()
+          result.push(pairs[i][1])
         }
-        return result
+      }
+      return result
     }
 
     function entries() {
       const result = []
-        for (const bucket of buckets) {
-          for (const pair of bucket) {
-            result.push(pair)
+
+      for (const bucket of buckets) {
+        if (!bucket.head) continue;
+
+        for (let i = 0; i <= bucket.length; i++) {
+            const pairs = bucket.keyValues()
+            result.push(pairs[i])
           }
-        }
-        return result
+      }
+      return result
     }
 
     // Helping functions
     function growth() {
-      const currentbuckets = buckets
-      capacity *= 2
-      buckets = new Array(capacity).fill(null).map(() => []);
       count = 0
-
+      capacity *= 2
+      const currentbuckets = buckets
+      buckets = new Array(capacity).fill(null).map(() => LinkedList());
+      
       for (const bucket of currentbuckets) {
-        for (const [key, value] of bucket) {
-          set(key, value)
-        }
+        const list = bucket.keyValues()
+
+        list.forEach((keyValue) => { 
+          set(keyValue[0], keyValue[1])
+        })
+        
       }
     }
 
     const seeBuckets = () => buckets
 
-    return { set, get, has, seeBuckets, remove, length, clear, keys, values, entries };
+    return { set, get, has, seeBuckets, remove, length, clear, keys, values, entries, printHMap };
 }
