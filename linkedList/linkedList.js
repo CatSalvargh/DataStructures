@@ -1,5 +1,4 @@
 const Node = function(val) {
-
     const value = val 
     let next = null
 
@@ -136,15 +135,16 @@ export function LinkedList() {
     }
 
     function removeAt(index) {
-        if (index < 0 || index >= length) return null;
+        if (index < 0 || index > length) return null;
 
         if (index === 0) {
             head = head.next;
-        } else {
-            let current = head;
-            for (let i = 0; i < index - 1; i++) current = current.next;
-            current.next = current.next?.next || null;
         }
+        let current = head;
+        for (let i = 0; i < index - 1; i++) {
+            current = current.next
+        }
+        current.next = current.next?.next || null
         length--;
     }
 
