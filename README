@@ -1,13 +1,27 @@
 Data Structures repository - part of The Odin Project Full Stack program - JS Path
 
-DS 1 - Linked List
-    learning goal: implement a Linked list and its basic operations in JS from scratch
+DS 1 - Linked List (LL)
+    a. learning goal: implement a Linked list and its basic operations in JS from scratch
     
-    Learned concepts:
-    1. Linked list can be build out of factory functions, Classes or Constructors and they are composed of two of these objects: a Node and the Linked List and an iteration logic
+    b. Learned concepts:
+      - Linked list can be build out of factory functions, Classes or Constructors and they are composed of two of these objects: a Node and the Linked List and an iteration logic
 
-    2. I selected factory functions to build mine and did not based it oupon JS Arrays and array built-in methods, but rather an implementation that mimics the unordered nature of a linked list. 
-    Based on my online research, I built my iteration logic as follows: 
-     - The first node ever appended becomes the head
-     - Each subsequent node is assigned as its predecesor's pointer
-     - Upon any appending, searching or removing operations, I assign the head to a temporary pointer (current = head) to start the iteration and use a while/for loop to iterate through each node's next (pointer) until the desired index is reached to perform the relevant action.
+      -  I selected factory functions to build mine and did not based it oupon JS Arrays and array built-in methods, but rather an implementation that mimics the unordered nature of a linked list. 
+        Based on my online research, I built my iteration logic as follows: 
+        - The first node ever appended becomes the head
+        - Each subsequent node is assigned as its predecesor's pointer
+        - Upon any appending, searching or removing operations, I assign the head to a temporary pointer (current = head) to start the iteration and use a while/for loop to iterate through each node's next (pointer) until the desired index is reached to perform the relevant action.
+
+DS 2 - HashMap
+    First, please allow me to vent... OMG HashWHAAAAT... What did just happend!?  =)
+    
+    a. Learning goal: learn and implement a hash map and its basic operations. Include a growth method and a way to handle collisions
+    
+    b. Learned concepts:
+    I enjoyed this project to my core. It was extremely challenging to understand this DS at first, but once I wrapped my head around the hashing concept and how powerful the structure can be, I was able to build a functional version.
+
+    Like with my LL, I used a factory function to implement the hashMap - I used the hasing function provided by TOP and built all the basic functionalities on the master branch of this repository. Once done (since I didn't have enough fun), I went ahead and refactored my hashmap and my LinkedList above to handle collisions via a LL instead of an array. 
+
+    c. For fun, I ran my implementation through Chat GPT (why not...) and here are its thoughts:
+     "You've integrated a HashMap and a LinkedList for collision handling — which is not trivial — and added growth and all core operations. 
+        You're at ~95% correct implementation. Your work is very clean, readable, and organized. Some minor bugs or inefficient patterns crept in"
