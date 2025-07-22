@@ -18,15 +18,17 @@ export function LinkedList() {
         } else {
             let current = head
         
-            while (current.next) {
+            while (current) {
                 if (current.entry[0] === key) {
-                    current.entry[1] = val
+                    current.entry[1] = val;
+                    return;
                 }
-                current = current.next
+                if (!current.next) break;
+                current = current.next;
             }
             current.next = newNode
         }
-        length += 1
+        length++
     }
 
     function prepend(val) {
@@ -94,12 +96,14 @@ export function LinkedList() {
         if (!head) return null
 
         let current = head
-        
-        for(let i = 0; i <= length ; i ++) {
+        let i = 0
+
+        while(current) {
             if (current.entry[0] === val) {
                 return i
             }
             current = current.next
+            i++
         }
         return  null
     }
@@ -108,7 +112,7 @@ export function LinkedList() {
         let current = head
         let string = '';
         while (current) {
-            string += ` |(${current.entry}) -> `
+            string += `(${current.entry}) -> `
             current = current.next
         }
         string += null
@@ -142,24 +146,25 @@ export function LinkedList() {
     }
 
     function insertAt(value, index) {
-            if (!head) {
-                prepend(value)
-            } 
-            if (index >= length) {
-                append(value);
-                return;
-            }
-            let current = head
-            let i = 0
-            while (current.next && i < index - 1) {
-                    current = current.next
-                    i++
-            }
-            const newNode = Node(value)
-            let temp = current.next
-            newNode.next = temp
-            current.next = newNode
-            length++
+        if (!head || index <= 0) {
+            prepend(value)
+            return;
+        } 
+        if (index >= length) {
+            append(value);
+            return; 
+        }
+        let current = head
+        let i = 0
+        while (current.next && i < index - 1) {
+                current = current.next
+                i++
+        }
+        const newNode = Node(value)
+        let temp = current.next
+        newNode.next = temp
+        current.next = newNode
+        length++
     }
 
     function removeAt(index) {

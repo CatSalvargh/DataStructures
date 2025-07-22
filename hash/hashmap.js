@@ -1,6 +1,6 @@
 import { LinkedList } from './linkedList.js'
 
-export function stringToNumber(string) {
+function stringToNumber(string) {
     let hashCode = 0;
     const primeNumber = 31;
 
@@ -18,8 +18,6 @@ export function HashMap(initialCapacity = 4) {
     const loadFactor = 0.75;
 
     const hash = (key) => (stringToNumber(key)) % capacity
-
-    const printHMap = () => console.log(buckets.toString())
 
     function set(key, value) {
       const index = hash(key);
@@ -82,48 +80,38 @@ export function HashMap(initialCapacity = 4) {
       count = 0
     }
 
-    function keys() {
+
+    function getThings(item) {
       const result = []
 
       for (const bucket of buckets) {
 
         if (!bucket.head) continue;
+        const pairs = bucket.keyValues()
 
         for (let i = 0; i <= bucket.length; i++) {
-          const pairs = bucket.keyValues()
-          result.push(pairs[i][0])
+          if (item === 'keys') {
+            result.push(pairs[i][0])
+          } else if (item === 'values') {
+            result.push(pairs[i][1])
+          } else {
+            result.push(pairs[i])
+          }
         }
       }
       return result
+    }
+
+    function keys() {
+      return getThings('keys')
     }
 
     function values() {
-      const result = []
-
-      for (const bucket of buckets) {
-
-        if (!bucket.head) continue;
-
-        for (let i = 0; i <= bucket.length; i++) {
-          const pairs = bucket.keyValues()
-          result.push(pairs[i][1])
-        }
-      }
-      return result
+      return getThings('values')
     }
 
     function entries() {
-      const result = []
-
-      for (const bucket of buckets) {
-        if (!bucket.head) continue;
-
-        for (let i = 0; i <= bucket.length; i++) {
-            const pairs = bucket.keyValues()
-            result.push(pairs[i])
-          }
-      }
-      return result
+      return getThings('entries')
     }
 
     // Helping functions
@@ -143,7 +131,11 @@ export function HashMap(initialCapacity = 4) {
       }
     }
 
-    const seeBuckets = () => buckets
+    function printHMap() {
+      for (let i = 0; i < buckets.length; i++) {
+        console.log(`Bucket ${i}: ${buckets[i].toString()}`);
+      }
+    }
 
-    return { set, get, has, seeBuckets, remove, length, clear, keys, values, entries, printHMap };
+    return { set, get, has, remove, length, clear, keys, values, entries, printHMap };
 }
