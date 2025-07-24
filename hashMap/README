@@ -1,5 +1,5 @@
 Data Structures repository - part of The Odin Project Full Stack program - JS Path
-Linked List |  HashMap |  Balanced Binary Search Tree
+Linked List |  HashMap |  Balanced Binary Search Tree  | Queue
 
 DS 2 - HashMap
     a. Learning goal: learn and implement a hash map and its basic operations. Include a growth method and a way to handle collisions

@@ -1,5 +1,5 @@
 Data Structures repository - part of The Odin Project Full Stack program - JS Path
-Linked List |  HashMap |  Balanced Binary Search Tree
+Linked List |  HashMap |  Balanced Binary Search Tree | Queue
 
 DS 1 - Linked List (LL)
     a. learning goal: implement a Linked list and its basic operations in JS from scratch
@@ -28,3 +28,12 @@ DS 3 - Balanced Binary Search Tree (BST)
       - Balanced vs unbalanced
       
       - I implemented the Tree and its nodes via ES6 Classes. This structure was complex to understand at first due to the fact that it uses recursion for most all of its methods. However, this is the fact that makes it so powerful. The most challenging methods to built were removal of an element and the traversals.
+
+// DS Not part of TOP curriculum
+DS 4 - QUEUE
+    a. Learning goal: implement a queue DS
+
+    b. Learned concepts:
+      - queues were not part of the curriculum, however I had learned independently for another project and I decided to implement it here as well.
+
+      - My implementation uses an object instead of an array to hold the elements of the queue and items are synthetically 'indexed' via a rare and front pointers that increase/decrease as elements are enqueued and dequeued
