@@ -1,0 +1,10 @@
+Data Structures repository - part of The Odin Project Full Stack program - JS Path
+Linked List |  HashMap |  Balanced Binary Search Tree
+
+DS 2 - HashMap
+    a. Learning goal: learn and implement a hash map and its basic operations. Include a growth method and a way to handle collisions
+    
+    b. Learned concepts:
+    I enjoyed this project to my core. It was extremely challenging to understand this DS at first, but once I wrapped my head around the hashing concept, I was able to see how powerful the structure can be.
+
+    I used a factory function to implement the hashMap, with the hasing function provided by TOP and I built all the basic functionalities on the mmain branch of this repository. Once done with the basic implementation, I went ahead and refactored it to handle collisions via a LinkedList instead of an array.

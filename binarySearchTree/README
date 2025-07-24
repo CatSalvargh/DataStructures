@@ -1,0 +1,11 @@
+Data Structures repository - part of The Odin Project Full Stack program - JS Path
+Linked List |  HashMap |  Balanced Binary Search Tree
+
+DS 3 - Balanced Binary Search Tree (BST)
+    a. Learning goal: Learn and implement a balanced BST and its operations
+
+    b. Learned concepts:
+      - Traversals
+      - Balanced vs unbalanced
+      
+      - I implemented the Tree and its nodes via ES6 Classes. This structure was complex to understand at first due to the fact that it uses recursion for most all of its methods. However, this is the fact that makes it so powerful. The most challenging methods to built were removal of an element and the traversals.
