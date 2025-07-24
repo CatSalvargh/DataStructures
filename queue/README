@@ -1,0 +1,11 @@
+
+Data Structures repository - part of The Odin Project Full Stack program - JS Path
+Linked List |  HashMap |  Balanced Binary Search Tree  | Queue
+
+DS 4 - QUEUE
+    a. Learning goal: implement a queue DS
+
+    b. Learned concepts:
+      - queues were not part of the curriculum, however I had learned independently for another project and I decided to implement it here as well.
+
+      - My implementation uses an object instead of an array to hold the elements of the queue and items are synthetically 'indexed' via a rare and front pointers that increase/decrease as elements are enqueued and dequeued
